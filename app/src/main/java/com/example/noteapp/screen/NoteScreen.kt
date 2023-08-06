@@ -1,11 +1,15 @@
 package com.example.noteapp.screen
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -24,10 +28,18 @@ import androidx.compose.ui.unit.dp
 import com.example.noteapp.R
 import com.example.noteapp.components.InputButton
 import com.example.noteapp.components.NoteInputText
+import com.example.noteapp.components.NotesDisplay
+import com.example.noteapp.data.Note
+import com.example.noteapp.data.NoteDataSource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NoteScreen(){
+fun NoteScreen(
+    notes: List<Note>,
+    onAddNote: (Note) -> Unit,
+    onRemoveNote: (Note) -> Unit,
+
+){
     var title by remember {
         mutableStateOf("")
     }
@@ -83,9 +95,21 @@ fun NoteScreen(){
                 text = "Add note",
                 textColor = colorResource(id = R.color.my_mustard) ,
                 btnColor =colorResource(id = R.color.my_blue),
-                onClick = {/*TODO*/ }
+                onClick = {
+                    if(title.isNotEmpty() && note.isNotEmpty()){
+                        // add to the list
+                        title = ""
+                        note = ""
+                    }
+                }
                 )
             // display saved notes
+            Divider(
+                thickness = 5.dp,
+                color = colorResource(id = R.color.my_blue)
+            )
+            NotesDisplay(notes = notes, onAddNote = {}, onRemoveNote = {})
+
         }
 
 
@@ -93,8 +117,9 @@ fun NoteScreen(){
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Preview(showBackground = true)
 @Composable
 fun NoteScreenPreview(){
-    NoteScreen()
+    NoteScreen(notes = NoteDataSource().loadNotes(), onAddNote = {}, onRemoveNote ={} )
 }
