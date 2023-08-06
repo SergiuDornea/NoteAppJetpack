@@ -54,9 +54,9 @@ fun NoteInputText(
 
 
 @Composable
-fun InputButton(text: String, textColor : Color, btnColor: Color, modifier: Modifier = Modifier){
+fun InputButton(text: String, textColor : Color, btnColor: Color, onClick: () -> Unit, modifier: Modifier = Modifier){
     Button(
-        onClick = { /*TODO*/ },
+        onClick = onClick,
         colors = ButtonDefaults.buttonColors(containerColor = btnColor)
         ) {
         Text(text = text, color = textColor)
