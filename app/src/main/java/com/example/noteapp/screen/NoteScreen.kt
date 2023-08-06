@@ -4,6 +4,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -16,13 +18,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.noteapp.R
+import com.example.noteapp.components.InputButton
 import com.example.noteapp.components.NoteInputText
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NoteScreen(){
     Column(
-
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
 
     ) {
         TopAppBar(
@@ -39,12 +43,16 @@ fun NoteScreen(){
         //Content
         Column(
             verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(top = 30.dp)
         ) {
-            // insert input fields + submit button
+            // insert input fields
             NoteInputText(text = "Hello", label = "Title", onTextChange = {})
             Spacer(modifier = Modifier.height(20.dp))
             NoteInputText(text = "Your note", label = "Note", onTextChange = {})
+            // submit button
+            Spacer(modifier = Modifier.height(40.dp))
+            InputButton(text = "Add note", textColor = colorResource(id = R.color.my_mustard) , btnColor =colorResource(id = R.color.my_blue))
             // display saved notes
         }
 
