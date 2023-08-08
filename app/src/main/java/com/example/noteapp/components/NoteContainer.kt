@@ -21,7 +21,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.noteapp.R
 import com.example.noteapp.data.Note
-import java.time.format.DateTimeFormatter
 
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -54,10 +53,10 @@ fun NoteContainer(
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold
                     )
-//                Text(
-//                    text = note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM")),
-//                    modifier = Modifier.padding(start = 100.dp),
-//                )
+                Text(
+                    text = note.entryDate,
+                    modifier = Modifier.padding(start = 100.dp),
+                )
             }
 
             Text(

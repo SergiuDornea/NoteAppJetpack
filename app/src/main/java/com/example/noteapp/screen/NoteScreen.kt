@@ -122,7 +122,7 @@ fun NoteScreen(
             )
 
             // display saved notes
-            NotesDisplay(notes = notes, onAddNote = onAddNote, onRemoveNote = onRemoveNote)
+            NotesDisplay(notes = notes, onRemoveNote = onRemoveNote)
 
         }
 

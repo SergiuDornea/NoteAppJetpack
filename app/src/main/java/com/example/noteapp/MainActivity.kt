@@ -7,8 +7,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.noteapp.data.NoteDataSource
 import com.example.noteapp.screen.NoteScreen
 import com.example.noteapp.screen.NoteViewModel
@@ -33,8 +33,8 @@ class MainActivity : ComponentActivity() {
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun NotesApp(noteViewModel: NoteViewModel = viewModel()){
-    val notesList = noteViewModel.getAllNotes()
+fun NotesApp(noteViewModel: NoteViewModel ){
+    val notesList = noteViewModel.noteList.collectAsState().value
     NoteScreen(
         notes = notesList,
         onAddNote = {

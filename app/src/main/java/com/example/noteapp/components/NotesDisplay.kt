@@ -11,7 +11,6 @@ import com.example.noteapp.data.Note
 @Composable
 fun NotesDisplay(
     notes: List<Note>,
-    onAddNote: (Note) -> Unit,
     onRemoveNote: (Note) -> Unit,
 
     )
