@@ -54,10 +54,10 @@ fun NoteContainer(
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold
                     )
-                Text(
-                    text = note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM")),
-                    modifier = Modifier.padding(start = 100.dp),
-                )
+//                Text(
+//                    text = note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM")),
+//                    modifier = Modifier.padding(start = 100.dp),
+//                )
             }
 
             Text(
